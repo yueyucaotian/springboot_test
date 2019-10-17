@@ -23,4 +23,9 @@ public class UserController {
     public JsonResult getUserByName(login login) throws Exception{
         return userService.findUserByName(login);
     }
+
+    @RequestMapping("/get")
+    public JsonResult getUsers() throws Exception{
+        return userService.test();
+    }
 }

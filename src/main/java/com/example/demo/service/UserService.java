@@ -4,6 +4,7 @@ import com.example.demo.dao.UserDao;
 import com.example.demo.entity.JsonResult;
 import com.example.demo.pojo.User;
 import com.example.demo.vo.login;
+import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,5 +54,20 @@ public class UserService {
 
     public User findUserById(String id){
         return userDao.findUserById(id);
+    }
+
+    public JsonResult test(){
+        PageQuery<User> userPageQuery = new PageQuery<>();
+        User user = new User();
+        int pageSize = 10,page=2;
+        userPageQuery.setPageSize(pageSize);
+        userPageQuery.setPageNumber(page);
+        userPageQuery.setParas(user);
+        userDao.selectUsers(userPageQuery);
+        return JsonResult.builder()
+                .code("0000")
+                .message("获取成功")
+                .data(userPageQuery)
+                .build();
     }
 }

@@ -5,3 +5,11 @@ findUserByName
 findUserById
 ===
     select * from sys_account where id = #userId#
+    
+selectUsers
+===
+    select
+    @pageTag(){
+        *
+    @}
+    from sys_account 
