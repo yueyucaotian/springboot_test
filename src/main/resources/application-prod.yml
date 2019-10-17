@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.30.216:3306/yyt?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: yuxun123.
+logging:
+  config: classpath:logback-admin.xml
+log:
+  level:
+    root: info
+    my: debug
+  file: logs/admin-server.log
+  maxsize: 30MB
+server:
+  port: 8080
