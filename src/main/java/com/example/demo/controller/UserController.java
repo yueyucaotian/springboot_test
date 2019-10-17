@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.annotation.UserLoginToken;
+import com.example.demo.entity.JsonPagination;
 import com.example.demo.entity.JsonResult;
 import com.example.demo.pojo.User;
 import com.example.demo.service.TokenService;
 import com.example.demo.service.UserService;
+import com.example.demo.vo.PaginationVO;
 import com.example.demo.vo.login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +27,9 @@ public class UserController {
         return userService.findUserByName(login);
     }
 
+    @UserLoginToken
     @RequestMapping("/get")
-    public JsonResult getUsers() throws Exception{
-        return userService.test();
+    public JsonPagination getUsers(PaginationVO paginationVO) throws Exception{
+        return userService.test(paginationVO);
     }
 }

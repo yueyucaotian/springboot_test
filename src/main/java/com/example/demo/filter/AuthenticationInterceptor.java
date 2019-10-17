@@ -26,12 +26,14 @@ import java.lang.reflect.Method;
  */
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
+    private static final String SECRET = "YYT-SHARE";   //公用密钥
+
     @Autowired
     UserService userService;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
-        String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
+        String token = httpServletRequest.getHeader("access_token");// 从 http 请求头中取出 token
         if(!(object instanceof HandlerMethod)){
             return true;
         }
@@ -69,7 +71,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 }
 
                 //验证token
-                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPwd())).build();
+                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
                 try{
                     jwtVerifier.verify(token);
                 }catch (JWTVerificationException e){

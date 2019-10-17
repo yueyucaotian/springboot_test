@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.annotation.UserLoginToken;
 import com.example.demo.entity.JsonResult;
 import com.example.demo.service.menu.MenuService;
 import com.example.demo.service.menu.MenuTree;
@@ -23,6 +24,7 @@ public class Common {
     @Autowired
     MenuService menuService;
 
+    @UserLoginToken
     @RequestMapping("/menu")
     public JsonResult getMenu(HttpServletRequest httpServletRequest) throws Exception{
         return menuService.getAllMenu(httpServletRequest);

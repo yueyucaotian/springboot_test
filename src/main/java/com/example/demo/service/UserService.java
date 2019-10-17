@@ -1,8 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.dao.UserDao;
+import com.example.demo.entity.JsonPagination;
 import com.example.demo.entity.JsonResult;
 import com.example.demo.pojo.User;
+import com.example.demo.vo.PaginationVO;
 import com.example.demo.vo.login;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,18 +58,17 @@ public class UserService {
         return userDao.findUserById(id);
     }
 
-    public JsonResult test(){
+    public JsonPagination test(PaginationVO paginationVO){
         PageQuery<User> userPageQuery = new PageQuery<>();
         User user = new User();
-        int pageSize = 10,page=2;
-        userPageQuery.setPageSize(pageSize);
-        userPageQuery.setPageNumber(page);
+        userPageQuery.setPageSize(paginationVO.getLimit());
+        userPageQuery.setPageNumber(paginationVO.getPage());
         userPageQuery.setParas(user);
         userDao.selectUsers(userPageQuery);
-        return JsonResult.builder()
+        return JsonPagination.builder()
                 .code("0000")
-                .message("获取成功")
-                .data(userPageQuery)
+                .data(userPageQuery.getList())
+                .count(userPageQuery.getTotalRow())
                 .build();
     }
 }
