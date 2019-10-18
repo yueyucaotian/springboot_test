@@ -26,7 +26,7 @@ public class UserService {
     }
 
     public JsonResult findUserByName(login login){
-        User user = userDao.findUserByName(login.getUsername());
+        User user = userDao.findUserByName(login);
         if(user==null){
             return JsonResult.builder()
                     .code("0001")

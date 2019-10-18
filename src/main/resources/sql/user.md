@@ -1,10 +1,10 @@
 findUserByName
 ===
-    select * from sys_account where login_name=#loginName#
+    select * from sys_account where login_name=#username#
     
 findUserById
 ===
-    select * from sys_account where id = #userId#
+    select * from sys_account where id = #id#
     
 selectUsers
 ===
