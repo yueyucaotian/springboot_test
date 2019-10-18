@@ -34,7 +34,7 @@ public class TokenService {
                 .withExpiresAt(new Date(System.currentTimeMillis() + maxAge))    //过期时间
                 .withIssuedAt(new Date())                                        // token签发时间
                 .withAudience(user.getId())
-                .sign(Algorithm.HMAC256(SECRET));
+                .sign(Algorithm.HMAC256(SECRET+user.getPwd()));
 
         return token;
     }
