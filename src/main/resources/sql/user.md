@@ -13,3 +13,7 @@ selectUsers
         *
     @}
     from sys_account 
+    
+    @if(!isEmpty(id) && id!=""){
+        Where id = #id#
+    @}

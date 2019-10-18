@@ -29,7 +29,7 @@ public class UserController {
 
     @UserLoginToken
     @RequestMapping("/get")
-    public JsonPagination getUsers(PaginationVO paginationVO) throws Exception{
-        return userService.test(paginationVO);
+    public JsonPagination getUsers(User user,PaginationVO paginationVO) throws Exception{
+        return userService.test(user,paginationVO);
     }
 }

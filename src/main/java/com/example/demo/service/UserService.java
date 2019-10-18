@@ -58,12 +58,12 @@ public class UserService {
         return userDao.findUserById(id);
     }
 
-    public JsonPagination test(PaginationVO paginationVO){
+    public JsonPagination test(User user, PaginationVO paginationVO){
         PageQuery<User> userPageQuery = new PageQuery<>();
-        User user = new User();
         userPageQuery.setPageSize(paginationVO.getLimit());
         userPageQuery.setPageNumber(paginationVO.getPage());
         userPageQuery.setParas(user);
+        System.out.println(user.getId().equals(""));
         userDao.selectUsers(userPageQuery);
         return JsonPagination.builder()
                 .code("0000")

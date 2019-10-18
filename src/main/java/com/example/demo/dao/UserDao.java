@@ -13,6 +13,5 @@ public interface UserDao extends BaseMapper<User>{
 
     User findUserById(String userId);
 
-
     void selectUsers(PageQuery<User> userPageQuery);
 }
