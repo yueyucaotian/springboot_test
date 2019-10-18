@@ -14,6 +14,6 @@ selectUsers
     @}
     from sys_account 
     
-    @if(!isEmpty(id) && id!=""){
+    @if(!isEmpty(id)){
         Where id = #id#
     @}
