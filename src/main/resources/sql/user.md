@@ -4,7 +4,7 @@ findUserByName
     
 findUserById
 ===
-    select * from sys_account where id = #id#
+    select * from sys_account where id = #userId#
     
 selectUsers
 ===
